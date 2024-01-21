@@ -35,7 +35,7 @@ def setup_routers():
 
 
 def setup_middlewares():
-    i18n = I18n(path=Path(__file__).parent / 'locales', default_locale='en', domain='bot')
+    i18n = I18n(path=Path(__file__).parent / 'locales', default_locale='ru', domain='bot')
     i18n_middleware = SimpleI18nMiddleware(i18n=i18n)
     i18n_middleware.setup(glv.dp)
     glv.dp.message.middleware(DBCheck())
@@ -45,12 +45,6 @@ async def main():
     setup_routers()
     setup_middlewares()
     glv.dp.startup.register(on_startup)
-    
-    webhook_requests_handler = SimpleRequestHandler(
-        dispatcher=glv.dp,
-        bot=glv.bot,
-    )
-    webhook_requests_handler.register(app, path="/webhook")
 
     setup_application(app, glv.dp, bot=glv.bot)
     await glv.dp.start_polling(glv.bot)

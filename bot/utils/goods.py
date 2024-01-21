@@ -1,5 +1,6 @@
 import json
 
+
 def get(callback=None) -> list | dict:
     with open("goods.json") as file:
         data = json.load(file)
@@ -9,6 +10,7 @@ def get(callback=None) -> list | dict:
         if v['callback'] == callback:
             return v
     return dict()
+
 
 def get_callbacks() -> list:
     with open("goods.json") as file:

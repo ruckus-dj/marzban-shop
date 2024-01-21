@@ -2,6 +2,7 @@ import hashlib
 import json
 from base64 import b64encode
 
+
 def check(data, key) -> bool:
     sign = data['sign']
     del data['sign']
